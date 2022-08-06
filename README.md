@@ -1,5 +1,5 @@
-# Yml Parser Config 🪚
-
+# Config 🪚
+## Yml Parser 
 This mini tool have the follow actions:
 * Create a config file
 * Read a config file
