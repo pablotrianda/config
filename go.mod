@@ -1,3 +1,3 @@
-module github.com/pablotrianda/yml-parser-config
+module github.com/pablotrianda/config
 
 go 1.18

@@ -1,9 +1,9 @@
 package main
 
 import (
-	conf "github.com/pablotrianda/yml-parser-config"
+	config "github.com/pablotrianda/config"
 )
 
 func main() {
-	conf.Run()
+	config.Run()
 }
