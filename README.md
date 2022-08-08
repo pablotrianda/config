@@ -1,4 +1,3 @@
-## Yml Parser 
 # Config 🪚
 This mini tool have the follow actions:
 * [x] Read a config file
