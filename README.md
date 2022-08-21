@@ -10,9 +10,9 @@ This mini tool have the follow actions:
 * [ ] Sync with a remote repository (git)
 
 ## Installation
-To install Gen package, you need to install Go and set your Go workspace first.
+To install config package, you need to install Go and set your Go workspace first.
 
-1.The first need Go installed(version 1.14+ is required), then you can use the below Go command to install Gen.
+1.The first need Go installed(version 1.14+ is required), then you can use the below Go command to install config.
 
 ```
 go get -u github.com/pablotrianda/config
