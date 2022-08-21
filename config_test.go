@@ -8,7 +8,7 @@ import (
 
 // Test if the filename is load correctly
 func Example_LoadFileData() {
-	cfg := config.Load("testdata/app/config.yaml")
+	cfg, _ := config.Load("testdata/app/config.yaml")
 
 	fmt.Println(cfg.ConfigFilePath)
 
@@ -16,9 +16,20 @@ func Example_LoadFileData() {
 	// testdata/app/config.yaml
 }
 
+func Example_GetErrorToLoadFile() {
+	_, error := config.Load("to/non-exist-fie.yaml")
+
+	if error != nil {
+		fmt.Printf("%v", error)
+	}
+
+	// Output:
+	// Cannot read the file
+}
+
 // Test get all data
 func Example_GetAllData() {
-	cfg := config.Load("testdata/app/config.yaml")
+	cfg, _ := config.Load("testdata/app/config.yaml")
 
 	fmt.Println(cfg.Info)
 
@@ -27,10 +38,19 @@ func Example_GetAllData() {
 }
 
 func Example_GetEspecificData() {
-	cfg := config.Load("testdata/app/config.yaml")
-
-	fmt.Print(cfg.Get("some"))
+	cfg, _ := config.Load("testdata/app/config.yaml")
+	value, _ := cfg.Get("some")
+	fmt.Print(value)
 
 	// Output:
 	// thing
+}
+
+func Example_GetErrorToGetNonExistData() {
+	cfg, _ := config.Load("testdata/app/config.yaml")
+	_, error := cfg.Get("non-exist")
+	fmt.Printf("%v", error)
+
+	// Output:
+	// Key non exist
 }
