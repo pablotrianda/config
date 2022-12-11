@@ -7,7 +7,6 @@ This package allow to read configurations an a easy and fast way from a `yaml` f
 
 This mini tool have the follow actions:
 * [x] Read a config file
-* [ ] Sync with a remote repository (git)
 
 ## Installation
 To install config package, you need to install Go and set your Go workspace first.
