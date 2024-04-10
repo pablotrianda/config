@@ -1,56 +1,44 @@
 package config_test
 
 import (
-	"fmt"
+	"testing"
 
 	"github.com/pablotrianda/config"
+	"github.com/stretchr/testify/assert"
 )
 
 // Test if the filename is load correctly
-func Example_LoadFileData() {
+func TestLoadFileData(t *testing.T) {
 	cfg, _ := config.Load("testdata/app/config.yaml")
 
-	fmt.Println(cfg.ConfigFilePath)
-
-	// Output:
-	// testdata/app/config.yaml
+	assert.Equal(t, "testdata/app/config.yaml", cfg.ConfigFilePath)
 }
 
-func Example_GetErrorToLoadFile() {
+func TestGetErrorToLoadFile(t *testing.T) {
 	_, error := config.Load("to/non-exist-fie.yaml")
 
-	if error != nil {
-		fmt.Printf("%v", error)
-	}
-
-	// Output:
-	// Cannot read the file
+	assert.NotNil(t, error)
 }
 
 // Test get all data
-func Example_GetAllData() {
-	cfg, _ := config.Load("testdata/app/config.yaml")
+func TestGetAllData(t *testing.T) {
+	cfg, error := config.Load("testdata/app/config.yaml")
 
-	fmt.Println(cfg.Info)
-
-	// Output:
-	// map[command:map[path:/here/we/go] here:goes some:thing]
+	assert.Nil(t, error)
+	assert.NotEmpty(t, cfg)
 }
 
-func Example_GetEspecificData() {
+func TestGetEspecificData(t *testing.T) {
 	cfg, _ := config.Load("testdata/app/config.yaml")
-	value, _ := cfg.Get("some")
-	fmt.Print(value)
+	value, err := cfg.Get("some")
 
-	// Output:
-	// thing
+	assert.Nil(t, err)
+	assert.Equal(t, "thing", value)
 }
 
-func Example_GetErrorToGetNonExistData() {
+func TestErrorToGetNonExistData(t *testing.T) {
 	cfg, _ := config.Load("testdata/app/config.yaml")
 	_, error := cfg.Get("non-exist")
-	fmt.Printf("%v", error)
 
-	// Output:
-	// Key non exist
+	assert.ErrorContains(t, error, "Key non exist")
 }
