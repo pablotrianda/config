@@ -10,7 +10,7 @@ import (
 
 type Conf struct {
 	ConfigFilePath string
-	Info           map[interface{}]interface{}
+	Info           map[any]any
 }
 
 // Get the value on type string only
@@ -32,7 +32,7 @@ func Load(configFilePath string) (Conf, error) {
 		return Conf{}, errors.New("Cannot read the file")
 	}
 
-	m := make(map[interface{}]interface{})
+	m := make(map[any]any)
 	_ = yaml.Unmarshal([]byte(file), &m)
 
 	conf.Info = m
